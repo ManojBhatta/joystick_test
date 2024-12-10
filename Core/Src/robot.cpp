@@ -4,7 +4,6 @@
 
 Robot robot;
 
-
 void Robot::init()
 {
     joystick_uart.init();
@@ -12,24 +11,21 @@ void Robot::init()
     HAL_Delay(100);
 }
 
-
 void Robot::run()
 {
     if (HAL_GetTick() - loop_tick < 10)
         return;
 
-    joystick_uart.get_received_data((uint8_t*)&twist);
+    joystick_uart.get_received_data((uint8_t *)&twist);
     print_twist();
 
     loop_tick = HAL_GetTick();
 }
 
-
 void Robot::print_twist()
 {
     printf("twist(v,w): %f %f\n", twist.v, twist.w);
 }
-
 
 void UART::UART_RxErrorCallBack(UART_HandleTypeDef *huart, UARTReceiveStatus status)
 {
@@ -40,7 +36,6 @@ void UART::UART_RxErrorCallBack(UART_HandleTypeDef *huart, UARTReceiveStatus sta
     }
 }
 
-
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
 {
     if (HAL_GetTick() - robot.get_err_led_tick() > 50)
@@ -49,7 +44,6 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
         robot.set_err_led_tick(HAL_GetTick());
     }
 }
-
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
@@ -64,7 +58,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         robot.process_joystick_callback();
     }
 }
-
 
 void run_robot()
 {
