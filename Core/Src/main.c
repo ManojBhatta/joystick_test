@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "dma.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -26,7 +27,7 @@
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
-#include "robot.h"
+
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
@@ -89,7 +90,13 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-  MX_UART4_Init();
+  MX_TIM2_Init();
+  MX_TIM9_Init();
+  MX_USART2_UART_Init();
+  MX_TIM1_Init();
+  MX_TIM3_Init();
+  MX_TIM4_Init();
+  MX_TIM8_Init();
   /* USER CODE BEGIN 2 */
   run_robot();
   /* USER CODE END 2 */

@@ -1,0 +1,4 @@
+{
+    "cmake.sourceDirectory": "/home/manoj/stm32/joystick_test/Drivers/CMSIS/NN",
+    "ros.distro": "humble"
+}
